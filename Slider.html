@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container img {
+            width: 900px;
+            height: 600px;
+            margin: 2% 20%;
+            position: relative;
+        }
+
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+            color: rgb(215, 215, 215);
+            background: transparent;
+        }
+
+        button:hover {
+            background-color: rgb(57, 56, 56);
+        }
+
+        .left {
+            position: absolute;
+            top: 42%;
+            left: 20%;
+        }
+
+        .right {
+            position: absolute;
+            top: 42%;
+            right: 21.4%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <img src="https://images.unsplash.com/photo-1616789916437-bbf724d10dae?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="">
+
+        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="">
+
+        <img src="https://images.unsplash.com/photo-1498887960847-2a5e46312788?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="">
+        <img src="https://static.toiimg.com/photo/80387978.cms"
+            alt="">
+        <img src="https://static.vecteezy.com/system/resources/previews/047/734/576/non_2x/sleek-futuristic-electric-car-featuring-neon-lights-showcasing-advanced-automotive-design-in-a-night-urban-setting-photo.jpg"
+            alt="">
+        <img src="https://t3.ftcdn.net/jpg/05/69/82/42/360_F_569824236_CXdqr0JnQSUa6hMBYkHk3rLSzf0Xjgml.jpg"
+            alt="">
+    </div>
+
+    <button class="left" onclick="abc(-1)"> <i class="fa-solid fa-chevron-up fa-rotate-270"></i></button>
+    <button class="right" onclick="abc(1)"> <i class="fa-solid fa-chevron-up fa-rotate-90"></i></button>
+
+
+    <script>
+
+        let show = 1;
+        let direction = 1;
+        slideshow(show);
+
+        //button function//
+        function abc(num) {
+            direction = num;
+            slideshow(show += num)
+        }
+        //button function//
+
+
+        function slideshow(n) {
+            let slide = document.querySelectorAll('.container img');
+
+            //button function//
+            if (n > slide.length) {
+                show = 1;
+            }
+
+            if (n < 1) {
+                show = slide.length
+            }
+            //button function//
+
+            slide.forEach((e) => {
+                e.style.display = 'none';
+            })
+
+            slide[show - 1].style.display = 'block';
+        }
+
+        setInterval(() => {
+            slideshow(show += direction);
+        }, 2000);
+
+    </script>
+</body>
+
+</html>
